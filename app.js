@@ -358,7 +358,7 @@ function applyPrompterTheme() {
   document.querySelector('.p-fade-top').style.background =
     `linear-gradient(to bottom, ${bg} 35%, transparent)`;
   document.querySelector('.p-fade-bottom').style.background =
-    `linear-gradient(to top, ${bg} 25%, transparent)`;
+    `linear-gradient(to top, ${bg} 12%, transparent 55%)`;
   document.getElementById('reading-line').style.background =
     isWob ? 'rgba(59,130,246,0.35)' : 'rgba(59,130,246,0.4)';
 }

@@ -378,8 +378,11 @@ input[type="range"]::-moz-range-thumb {
   pointer-events: none;
   z-index: 210;
 }
-.p-fade-top    { top: 0;   }
-.p-fade-bottom { bottom: 60px; height: 22vh; }
+.p-fade-top    { top: 0; }
+/* Bottom fade runs all the way to the screen edge so incoming text is
+   masked even when the control bar is hidden. The gradient stays solid
+   for the bottom ~12% (≈ control-bar height) then fades upward. */
+.p-fade-bottom { bottom: 0; height: 48vh; }
 
 /* Reading guide line at ~38% from top */
 #reading-line {
