@@ -8,6 +8,12 @@
 </head>
 <body>
 
+  <!-- Loading screen (shown while Firebase initialises) -->
+  <div id="loading-screen">
+    <div class="loader-spinner"></div>
+    <p class="loader-msg">Connecting…</p>
+  </div>
+
   <!-- ===== EDITOR VIEW ===== -->
   <div id="editor-view">
 
@@ -119,6 +125,13 @@
 
   </div><!-- /prompter-view -->
 
+  <!-- Firebase SDKs (compat build — no bundler required) -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+
+  <!-- Your Firebase project credentials (edit config.js) -->
+  <script src="config.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
