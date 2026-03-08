@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teleprompter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== EDITOR VIEW ===== -->
+  <div id="editor-view">
+
+    <header class="editor-header">
+      <span class="app-title">Teleprompter</span>
+      <div class="header-actions">
+        <button id="new-btn"    class="btn btn-ghost">+ New</button>
+        <button id="save-btn"   class="btn btn-primary">Save</button>
+        <button id="launch-btn" class="btn btn-launch">&#9654; Launch</button>
+      </div>
+    </header>
+
+    <div class="editor-body">
+
+      <!-- Saved scripts sidebar -->
+      <aside class="sidebar">
+        <p class="sidebar-heading">Saved Scripts</p>
+        <ul id="script-list"></ul>
+        <p id="no-scripts-msg" class="sidebar-empty">
+          No saved scripts yet.<br>Click <strong>+ New</strong> to begin.
+        </p>
+      </aside>
+
+      <!-- Editing area -->
+      <div class="editor-main">
+        <input id="script-name" type="text"
+               placeholder="Script name…"
+               autocomplete="off" spellcheck="false">
+
+        <textarea id="script-editor"
+          placeholder="Start typing your script here…&#10;&#10;This text will scroll in the teleprompter at your chosen speed."></textarea>
+
+        <!-- Settings panel -->
+        <div class="settings-panel">
+
+          <div class="setting">
+            <span class="slabel">Speed mode</span>
+            <div class="pills" id="speed-mode-toggle">
+              <button class="pill active" data-val="wpm">Words / min</button>
+              <button class="pill"        data-val="duration">Total time</button>
+            </div>
+          </div>
+
+          <div class="setting" id="wpm-setting">
+            <span class="slabel">WPM &nbsp;<strong id="wpm-val">150</strong></span>
+            <input type="range" id="wpm-slider" min="60" max="400" value="150" step="10">
+          </div>
+
+          <div class="setting hidden" id="dur-setting">
+            <span class="slabel">Duration &nbsp;<strong id="dur-val">5 min</strong></span>
+            <input type="range" id="dur-slider" min="1" max="60" value="5" step="1">
+          </div>
+
+          <div class="setting">
+            <span class="slabel">Font size &nbsp;<strong id="fs-val">52</strong>px</span>
+            <input type="range" id="fs-slider" min="24" max="120" value="52" step="4">
+          </div>
+
+          <div class="setting">
+            <span class="slabel">Theme</span>
+            <div class="pills" id="theme-toggle">
+              <button class="pill active" data-val="wob">White on Black</button>
+              <button class="pill"        data-val="bow">Black on White</button>
+            </div>
+          </div>
+
+          <div class="setting setting-info">
+            <span id="word-count">0 words</span>
+            <span id="est-time"></span>
+          </div>
+
+        </div><!-- /settings-panel -->
+      </div><!-- /editor-main -->
+
+    </div><!-- /editor-body -->
+  </div><!-- /editor-view -->
+
+
+  <!-- ===== TELEPROMPTER VIEW ===== -->
+  <div id="prompter-view" class="hidden">
+
+    <!-- Scrollable text container -->
+    <div id="prompter-scroll">
+      <div id="prompter-text"></div>
+    </div>
+
+    <!-- Fade overlays (colour set by JS to match theme) -->
+    <div class="p-fade p-fade-top"></div>
+    <div class="p-fade p-fade-bottom"></div>
+
+    <!-- Reading guide line -->
+    <div id="reading-line"></div>
+
+    <!-- Controls bar -->
+    <div id="ctrl-bar">
+      <div class="ctrl-row">
+        <button id="pp-btn"    class="c-btn">&#9654; Play</button>
+        <button id="stop-btn2" class="c-btn">&#9632; Stop</button>
+        <div class="speed-grp">
+          <button id="sd-btn" class="c-btn c-sm">&minus;</button>
+          <span id="speed-label">1.0&times;</span>
+          <button id="su-btn" class="c-btn c-sm">+</button>
+        </div>
+        <button id="exit-btn" class="c-btn c-exit">&#10005; Exit</button>
+      </div>
+      <div id="prog-bar"><div id="prog-fill"></div></div>
+      <p class="ctrl-hint">Space&nbsp;=&nbsp;play/pause &nbsp;&#9651;&#9661;&nbsp;=&nbsp;speed &nbsp;&#9665;&#9655;&nbsp;=&nbsp;skip &nbsp;Esc&nbsp;=&nbsp;exit</p>
+    </div>
+
+  </div><!-- /prompter-view -->
+
+  <script src="app.js"></script>
+</body>
+</html>
